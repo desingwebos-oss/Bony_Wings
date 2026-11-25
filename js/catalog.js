@@ -31,11 +31,11 @@ const variantes={
  ...[["1 litro",25],["1.5 litros",35]].map(([l,p],i)=>({id:"bb"+i,nombre:`Bebida ${l}`,precio:p,d:"Jamaica, horchata o limón",o:[{t:"Sabor (elige 1)",l:SAB,n:1}]}))
 ]};
 const cats=[
- {id:"combos",nombre:"Combos BW",nota:"Todo tu antojo en una sola orden",promos:[["combos.jpg","Combos BW"]]},
  {id:"pollo",nombre:"Alitas y pollo",nota:"Preparados al momento",promos:[["alitas.jpg","Alitas"],["boneless.jpg","Boneless"],["tenders.jpg","Tenders"],["nuggets.jpg","Nuggets"]]},
  {id:"botanas",nombre:"Botanas",nota:"Crujientes y doraditas",promos:[["dedos-de-queso.jpg","Dedos de queso"],["aros-de-cebolla.jpg","Aros de cebolla"],["salchipulpos.jpg","Salchipulpos"],["papas-francesa.jpg","Papas a la francesa"],["botanas.jpg","Botanas BW"]]},
  {id:"tacos",nombre:"Taco Bony",nota:"Tacos con todo el sabor",promos:[["taco-bony.jpg","Taco Bony"]]},
- {id:"postres",nombre:"Postres y bebidas",nota:"El final perfecto para tu antojo",promos:[["postres.jpg","Postres y bebidas"]]}
+ {id:"postres",nombre:"Postres y bebidas",nota:"El final perfecto para tu antojo",promos:[["postres.jpg","Postres y bebidas"]]},
+ {id:"combos",nombre:"Combos BW",nota:"Todo tu antojo en una sola orden",promos:[["combos.jpg","Combos BW"]]}
 ];
 BW.catalog={variantes,cats};
 })();

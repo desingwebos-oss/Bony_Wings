@@ -1,4 +1,4 @@
-const V="bw-v3";
+const V="bw-v4";
 const CORE=["./","index.html","manifest.webmanifest","css/main.css","css/order.css","css/theme-dark.css","js/config.js","js/catalog.js","js/cart.js","js/templates.js","js/ui.js","js/privacy.js","js/pwa.js","js/main.js","img/icons.svg","img/brand/logo.png","img/brand/icon-192.png","img/brand/icon-512.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
