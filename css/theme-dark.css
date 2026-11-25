@@ -1,0 +1,42 @@
+/* Tema oscuro BW: negro carbón + rojo chile, naranja fuego y amarillo mostaza */
+:root{color-scheme:dark;--bg:#0f0f10;--ink:#F6F1E7;--gris:#B2ABA1;--linea:#34312f;--rojo:#E5251B;--oro:#FFC21A;--fuego:linear-gradient(135deg,#E5251B,#FF6A13)}
+body{background:radial-gradient(900px 420px at 50% -120px,rgba(229,37,27,.35),transparent 70%),#0f0f10}
+.top{background:#121213;box-shadow:0 6px 24px rgba(0,0,0,.55);border-bottom:3px solid;border-image:linear-gradient(90deg,#E5251B,#FF6A13,#FFC21A) 1}
+.bar{background:#121213}
+.bar img{border-color:var(--oro);box-shadow:0 0 14px rgba(255,194,26,.45)}
+.bar .wa-top{color:#1b1b1b}
+.chip{background:#232326;color:var(--ink);border-color:#34312f}
+.chip.on{background:var(--fuego);color:#fff;border-color:transparent}
+.hero{box-shadow:0 0 0 4px var(--oro),0 14px 44px rgba(255,90,20,.5)}
+.pasos{background:#17171a}
+.pasos li{background:#242427}
+.pasos li b{background:var(--fuego)}
+h2{color:var(--oro);text-shadow:0 2px 0 rgba(229,37,27,.55)}
+.nota{color:var(--gris)}
+.arrows button{background:#232326;color:var(--ink)}
+.arrows button:hover{background:var(--fuego);color:#fff}
+.card{background:#1b1b1e;border:1px solid #302c2a;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+.poster,#lbImg{background:#111}
+.add{background:var(--fuego);box-shadow:0 4px 14px rgba(229,37,27,.35)}
+.step{background:#2b2b2f;border:1.5px solid #FF6A13}
+.wa-pill{background:#1b1b1e;color:var(--ink)}
+footer{background:#0a0a0b;border-top:3px solid;border-image:linear-gradient(90deg,#E5251B,#FF6A13,#FFC21A) 1}
+.cartbar .go{background:var(--fuego);color:#fff}
+dialog{background:#19191b;color:var(--ink);border:1px solid #302c2a}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+.x,.btn-cancel,.qq button{background:#2b2b2f;color:var(--ink)}
+.item{border-bottom-color:#2e2e31}
+.item span{color:#FF7A3D!important}
+.field input,.field textarea,textarea{background:#242427;border-color:#38353a;color:var(--ink)}
+.field input:focus,.field textarea:focus{background:#2b2b2f;border-color:var(--oro)}
+::placeholder{color:#8a847b}
+.salsa-item,.combo-item,.tipo,.refresco-item{background:#242427;border-color:#38353a;color:var(--ink)}
+.salsa-item.on,.combo-item.on,.tipo.on{background:#33281d;border-color:var(--oro);box-shadow:0 0 0 1px var(--oro)}
+.salsa-group h4{background:#2b2b2f;color:var(--gris)}
+.combo-item .precio{color:var(--oro)}
+.combo-item small{color:var(--gris)}
+.qty{background:#2b2b2f;border:1.5px solid #FF6A13}
+.qty input{background:#111;color:var(--ink)}
+.alert{background:#FFF3CD;color:#1b1b1b}
+.min{color:#FF6A5A}
+.tot{color:var(--oro)}
