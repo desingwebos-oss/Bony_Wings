@@ -1,7 +1,10 @@
 /* Configuración general del negocio. Aquí se cambian número, mínimo, redes y tipos de pedido. */
 window.BW={cfg:{
-  nombre:"Bony Wings",wa:"525621002417",waVer:"56 2100 2417",
-  min:250,max:99,esperaMs:180000,inactividadMs:600000,captcha:"BONY",prefijo:"BW",
+  nombre:"Bony Wings",version:"6",wa:"525621002417",waVer:"56 2100 2417",
+  min:250,max:99,
+  /* Precio por cada salsa/condimentador EXTRA (más allá de los incluidos). 0 = no se permiten extras. El menú no indica precio. */
+  extra:{salsa:0,condimentador:0},
+ esperaMs:180000,inactividadMs:600000,captcha:"BONY",prefijo:"BW",
   colonias:["Cantera Puente de Piedra","Isidro Fabela","Pueblo Quieto"],
   redes:[
     {id:"ig",nombre:"Instagram",txt:"Instagram @bonywings_bw",url:"https://www.instagram.com/bonywings_bw"},

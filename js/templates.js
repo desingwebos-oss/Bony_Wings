@@ -7,12 +7,12 @@ const tipos=C.tipos.map(t=>`<button type="button" class="tipo" data-tipo="${t.id
 BW.tpl={
 header:`<div class="bar"><div class="bar-in"><img src="img/brand/logo.png" alt="Logo ${C.nombre}" width="46" height="46"><div><span class="nom">${C.nombre}</span><small>Servicio a domicilio · Preparados al momento</small></div><a class="wa-top" data-wa href="#">${I("walogo")}Escríbenos</a></div></div><nav class="chips" id="chips" aria-label="Categorías"></nav>`,
 main:`<section class="banner"><div class="banner-in"><img class="hero" src="img/brand/logo.png" alt="${C.nombre} BW" width="512" height="512" fetchpriority="high"><div class="redes">${C.redes.map(r=>ext(r,I(r.id),"ico")).join("")}<a class="wa-pill" data-wa href="#">${I("walogo")}Escríbenos</a><button id="instalar" class="wa-pill" type="button" style="border-color:var(--oro)" hidden>📲 Instalar app</button></div></div></section>
-<section class="pasos"><div class="wrap"><h1>¿Qué se te antoja hoy?</h1><ol><li><b>1</b>Elige tus antojos</li><li><b>2</b>Toca Agregar</li><li><b>3</b>Envía por WhatsApp</li></ol><div class="info"><span>🛵 Envío gratis</span><span>🛒 Mínimo $${C.min} a domicilio</span><span>📍 Cobertura 3 km</span><span>📦 Ingredientes aparte en envíos</span></div></div></section><div id="secciones"></div>`,
-footer:`<div class="wrap"><div class="foot"><div><h3>${C.nombre}</h3><p>Más sabor, más papas, más BW.<br>Preparados al momento.<br>Puedes apartar tu orden y mandar tu propio repartidor: se la entregamos con los datos que nos des.</p></div><div><h3>Contacto</h3><p>WhatsApp: ${C.waVer}<br>${C.redes.map(r=>`<a href="${r.url}" target="_blank" rel="noopener">${r.txt}</a>`).join("<br>")}</p><div class="social"><a href="https://wa.me/${C.wa}" target="_blank" rel="noopener">${I("wa")}WhatsApp</a>${C.redes.map(r=>`<a href="${r.url}" target="_blank" rel="noopener">${I(r.id)}${r.nombre}</a>`).join("")}</div></div><div><h3>Zona de envío</h3><p>${C.colonias.join(", ")}.<br>Cobertura máxima de 3 km a la redonda · Pedido mínimo $${C.min} · Envío gratis.</p></div></div><div class="legal">© ${C.nombre} · Más sabor, más papas, más BW</div></div>`,
-cartbar:`<button id="barEmpty" class="empty" type="button">¡Arma tu pedido! 🍗</button><button id="barGo" class="go" type="button" hidden><span id="barTxt">Ver mi pedido</span><em id="barN">0</em></button>`,
+<section class="pasos"><div class="wrap"><h1>¿Qué se te antoja hoy?</h1><ol><li><b>1</b>Elige tu antojo</li><li><b>2</b>Prepáralo a tu gusto</li><li><b>3</b>Ve a tu carrito y envía por WhatsApp</li></ol><div class="info"><span>🛵 Envío gratis</span><span>🛒 Mínimo $${C.min} a domicilio</span><span>📍 Cobertura 3 km</span><span>📦 Ingredientes aparte en envíos</span></div></div></section><div id="secciones"></div>`,
+footer:`<div class="wrap"><div class="foot"><div><h3>${C.nombre}</h3><p>Más sabor, más papas, más BW.<br>Preparados al momento.<br>Puedes apartar tu orden y mandar tu propio repartidor: se la entregamos con los datos que nos des.</p></div><div><h3>Contacto</h3><p>WhatsApp: ${C.waVer}<br>${C.redes.map(r=>`<a href="${r.url}" target="_blank" rel="noopener">${r.txt}</a>`).join("<br>")}</p><div class="social"><a href="https://wa.me/${C.wa}" target="_blank" rel="noopener">${I("wa")}WhatsApp</a>${C.redes.map(r=>`<a href="${r.url}" target="_blank" rel="noopener">${I(r.id)}${r.nombre}</a>`).join("")}</div></div><div><h3>Zona de envío</h3><p>${C.colonias.join(", ")}.<br>Cobertura máxima de 3 km a la redonda · Pedido mínimo $${C.min} · Envío gratis.</p></div></div><div class="legal">© ${C.nombre} · Más sabor, más papas, más BW · v${C.version}</div></div>`,
+cartbar:`<button id="barEmpty" class="empty" type="button">🛒 Carrito</button><button id="barGo" class="go" type="button" hidden><span id="barTxt">Ver carrito</span><em id="barN">0</em></button>`,
 dialogs:`
 <dialog id="cart"><form class="sheet" id="form" autocomplete="off" novalidate>
-  <div class="sheet-h"><h3>Tu pedido <small id="folio" class="folio"></small></h3><button class="x" type="button" data-close>✕</button></div>
+  <div class="sheet-h"><h3>Tu carrito <small id="folio" class="folio"></small></h3><button class="x" type="button" data-close>✕</button></div>
   <div id="items"></div>
   <div class="tot"><span id="total">Total: $0</span></div><div class="min" id="minHint" hidden></div>
   <div class="field"><label>¿Cómo quieres tu pedido?</label><div class="tipos">${tipos}</div><div class="hint" id="tipoNota"></div></div>
@@ -31,11 +31,18 @@ dialogs:`
 <dialog id="lb"><div class="sheet"><div class="sheet-h"><h3 id="lbName"></h3><button class="x" type="button" data-close>✕</button></div><img id="lbImg" alt=""></div></dialog>
 <dialog id="addModal"><div class="sheet">
   <div class="sheet-h"><h3 id="addTitle">Elige</h3><button class="x" type="button" data-close>✕</button></div>
+  <p class="nota">Tú eliges cada ingrediente: empiezas de cero y armas tu preparación.</p>
+  <p class="paso" id="addVarsT" hidden></p>
   <div id="addVars" class="combo-list"></div>
   <div id="addOpts"></div>
-  <div class="qty-row"><span>¿Cuántos?</span><div class="qty"><button type="button" data-q="-1" aria-label="Menos">−</button><input id="qty" type="number" inputmode="numeric" min="1" max="${C.max}" value="1" autocomplete="off"><button type="button" data-q="1" aria-label="Más">+</button></div><div class="qq"><button type="button" data-q="5">+5</button><button type="button" data-q="10">+10</button></div></div>
-  <p class="hint" id="addHint"></p>
-  <div class="row"><button class="btn-cancel" type="button" data-close>Cancelar</button><button id="addGo" class="add" type="button">Agregar</button></div>
+  <details class="cond" id="addCond"><summary>Condiciones de este producto</summary><ul id="addCondL"></ul></details>
+  <div class="addbar">
+    <div class="preview" id="addPrev"></div>
+    <div class="qty-row"><span>¿Cuántos?</span><div class="qty"><button type="button" data-q="-1" aria-label="Menos">−</button><input id="qty" type="number" inputmode="numeric" min="1" max="${C.max}" value="1" autocomplete="off"><button type="button" data-q="1" aria-label="Más">+</button></div><div class="qq"><button type="button" data-q="5">+5</button><button type="button" data-q="10">+10</button></div></div>
+    <p class="hint" id="addHint"></p>
+    <button id="addGo" class="add" type="button" style="width:100%;min-height:50px;margin-top:8px">Agregar al carrito</button>
+    <div class="row2"><button id="addMore" type="button">+ Agregar y preparar otro distinto</button><button type="button" data-close>Cancelar</button></div>
+  </div>
 </div></dialog>`
 };
 })();

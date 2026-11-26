@@ -18,7 +18,7 @@ BW.cart={
     const t=C.tipos.find(x=>x.id===d.tipo);
     const lista=vals().map(v=>`• ${v.q} x ${v.n} — $${v.q*v.precio}`+(v.sel?"\n"+v.sel.split(" · ").map(s=>"   ↳ "+s).join("\n"):"")).join("\n");
     const lugar=d.tipo==="domicilio"?`\n📍 Dirección: ${d.lugar}`:d.tipo==="punto"?`\n📍 Punto de encuentro: ${d.lugar}`:"";
-    return `🍗 *BONY WINGS* 🍗\nFolio: *${BW.cart.folio}*\n\nHola, quiero hacer un pedido:\n\n${lista}\n\n💰 *Total: $${total()}*\n\n🧾 Tipo: *${t.nombre}*\n👤 Nombre: ${d.nombre}\n📱 WhatsApp: ${d.tel}${lugar}${d.notas?`\n📝 Notas: ${d.notas}`:""}\n\n✅ Confirmo pedido real.`;
+    return `🍗 *BONY WINGS* 🍗\nFolio: *${BW.cart.folio}*\n\nHola, quiero hacer un pedido:\n\n${lista}\n\n💰 *Total: $${total()}*\n\n🧾 Tipo: *${t.nombre}*\n👤 Nombre: ${d.nombre}\n📱 WhatsApp: ${d.tel}${lugar}${d.tipo==="domicilio"?"\n📦 Ingredientes aparte (envío a domicilio)":""}${d.notas?`\n📝 Notas: ${d.notas}`:""}\n\n✅ Confirmo pedido real.`;
   }
 };
 })();
